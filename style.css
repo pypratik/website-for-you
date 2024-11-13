@@ -1,0 +1,409 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #ffdfdf;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    color: #333;
+}
+
+.container {
+    width: 90%;
+    max-width: 700px;
+    text-align: center;
+}
+
+header {
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 3rem;
+    color: #e63946;
+    margin-bottom: 10px;
+}
+
+.message-section {
+    background: #f7cad0;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    cursor: pointer;
+}
+
+.message-section h2 {
+    color: #e63946;
+}
+
+.message-section p {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.photo-section {
+    margin-top: 30px;
+}
+
+.photo-section h2 {
+    color: #e63946;
+    margin-bottom: 20px;
+}
+
+.photos img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    border-radius: 15px;
+    margin: 5px;
+    transition: transform 0.3s;
+}
+
+.photos img:hover {
+    transform: scale(1.1);
+}
+
+.heart-animation .heart {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    animation: heartbeat 1s infinite;
+    transform: rotate(45deg);
+    background: #e63946;
+    margin: 0 auto;
+    border-radius: 50% 50% 0 0;
+}
+
+.heart::before,
+.heart::after {
+    content: '';
+    width: 100px;
+    height: 100px;
+    background: #e63946;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.heart::before {
+    top: -50px;
+    left: 0;
+}
+
+.heart::after {
+    left: 50px;
+    top: 0;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1) rotate(45deg); }
+    50% { transform: scale(1.1) rotate(45deg); }
+}
+/* Photo animations */
+@keyframes fadeInZoom {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) rotate(0deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(5deg);
+    }
+}
+
+.photos img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    border-radius: 15px;
+    margin: 5px;
+    transition: transform 0.5s, box-shadow 0.3s;
+    animation: fadeInZoom 1s ease forwards;
+    opacity: 0;
+}
+
+/* Photo animations */
+@keyframes floatIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.8) rotate(-10deg);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translateY(-10px) scale(1.05) rotate(5deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotate(0);
+    }
+}
+
+@keyframes shine {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    50% {
+        opacity: 0.5;
+        transform: translateX(50%);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(200%);
+    }
+}
+
+.photos img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    border-radius: 15px;
+    margin: 5px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.5s ease, box-shadow 0.4s ease;
+    animation: floatIn 1.5s ease forwards;
+    opacity: 0;
+}
+
+/* Staggered animation delay */
+.photos img:nth-child(1) {
+    animation-delay: 0.3s;
+}
+
+.photos img:nth-child(2) {
+    animation-delay: 0.6s;
+}
+
+.photos img:nth-child(3) {
+    animation-delay: 0.9s;
+}
+
+/* Hover Effect with 3D Tilt */
+.photos img:hover {
+    transform: scale(1.15) rotate(3deg) translateZ(10px);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Shine Effect */
+.photos img::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.6) 50%, rgba(255, 255, 255, 0) 100%);
+    transform: translateX(-100%);
+    transition: transform 0.4s ease;
+}
+
+.photos img:hover::before {
+    animation: shine 1.2s forwards;
+}
+
+/* Floating Effect on Hover */
+.photos img:hover {
+    animation: none;
+    transform: scale(1.1) rotate(3deg);
+}
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #ffdfdf;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    color: #333;
+    overflow: hidden;
+}
+
+/* Sparkling Background Animation */
+@keyframes sparkle {
+    0% { transform: translateY(-200px); opacity: 0.8; }
+    100% { transform: translateY(100vh); opacity: 0; }
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://media.giphy.com/media/xUOxfwT7VdZKrcy0ys/giphy.gif') repeat;
+    animation: sparkle 2s linear infinite;
+    pointer-events: none;
+}
+
+/* Heart Animation */
+@keyframes romanticHeart {
+    0%, 100% {
+        transform: scale(1) rotate(45deg);
+        box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+    }
+    50% {
+        transform: scale(1.2) rotate(45deg);
+        box-shadow: 0 0 40px rgba(255, 0, 0, 1);
+    }
+}
+
+.heart-animation .heart {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    background: linear-gradient(45deg, #ff3b3b, #ff6f61);
+    animation: romanticHeart 1.5s ease-in-out infinite;
+    transform: rotate(45deg);
+    margin: 0 auto;
+    border-radius: 50% 50% 0 0;
+}
+
+.heart::before,
+.heart::after {
+    content: '';
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(45deg, #ff3b3b, #ff6f61);
+    border-radius: 50%;
+    position: absolute;
+}
+
+.heart::before {
+    top: -50px;
+    left: 0;
+}
+
+.heart::after {
+    left: 50px;
+    top: 0;
+}
+
+/* Container */
+.container {
+    width: 90%;
+    max-width: 700px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+header {
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 3rem;
+    color: #e63946;
+    margin-bottom: 10px;
+    animation: fadeIn 2s ease;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.message-section {
+    background: #f7cad0;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    cursor: pointer;
+}
+
+.message-section h2 {
+    color: #e63946;
+}
+
+.message-section p {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+/* Floating Effect for Message Section */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.message-section {
+    animation: fadeIn 1.5s ease forwards;
+}
+
+/* Photos section */
+.photo-section {
+    margin-top: 30px;
+}
+
+.photo-section h2 {
+    color: #e63946;
+    margin-bottom: 20px;
+}
+
+/* Enhanced Floating and Zoom Effect on Photos */
+@keyframes floatIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.8) rotate(-10deg);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translateY(-10px) scale(1.05) rotate(5deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotate(0);
+    }
+}
+
+.photos img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    border-radius: 15px;
+    margin: 5px;
+    position: relative;
+    animation: floatIn 2s ease forwards;
+    opacity: 0;
+    transition: transform 0.5s ease, box-shadow 0.4s ease;
+}
+
+/* Staggered animation delay */
+.photos img:nth-child(1) {
+    animation-delay: 0.3s;
+}
+
+.photos img:nth-child(2) {
+    animation-delay: 0.6s;
+}
+
+.photos img:nth-child(3) {
+    animation-delay: 0.9s;
+}
+
+/* Hover Effect with 3D Tilt */
+.photos img:hover {
+    transform: scale(1.15) rotate(3deg) translateZ(10px);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+}
+
